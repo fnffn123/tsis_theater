@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.tsis.beommi.dao.TheaterDAO">
+ 
+   <select id="getMovies" resultType="Run_Movie">
+      	SELECT RUN_MOVIE_ID,RUN_MOVIE_ROOM_NUM,MOVIE_NM,RUN_MOVIE_PRICE,RUN_MOVIE_ST_TIME,RUN_MOVIE_RUNTIME,RUN_MOVIE_ROOM_SEATS
+		FROM run_MOVIE
+   </select>
+   
+   <select id="getPickedSeats" resultType="Movie_Reservation">
+   		SELECT seat_NUM
+   		FROM movie_RESERVATION
+   		WHERE run_MOVIE_ID=#{run_MOVIE_ID}
+   </select>
+   
+   <select id="getMovieRoom" resultType="Movie_Room">
+      SELECT movie_ROOM_NUM,movie_ROOM_SEATS, movie_ROOM_ROWS,movie_ROOM_COLS
+      FROM movie_ROOM
+      WHERE movie_ROOM_NUM=#{movie_ROOM_NUM}
+   </select>
+
+   <select id="getReservation" resultType="Search_Reservation">
+      SELECT run_MOVIE_ROOM_NUM,movie_NM,run_MOVIE_ST_TIME,seat_NUM
+      FROM movie_RESERVATION r JOIN run_MOVIE m ON r.run_MOVIE_ID=m.run_MOVIE_ID
+      WHERE phone_NUM=#{phone_NUM} AND owner_NM=#{owner_NM} 
+   </select>
+   
+   <insert id = "makeReservation" parameterType="Movie_Reservation">
+		INSERT INTO movie_RESERVATION(
+			MOVIE_RESERVATION_ID,
+			RUN_MOVIE_ID,
+			OWNER_NM,
+			PHONE_NUM,
+			SEAT_NUM
+		)
+		VALUES(
+			MOVIE_RESERVATION_ID,
+			#{run_MOVIE_ID},
+			#{owner_NM},
+			#{phone_NUM},
+			#{seat_NUM}
+		)
+		
+   </insert>
+   
+
+
+</mapper>
