@@ -1,0 +1,17 @@
+TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME,DATA_TYPE,IS_NULLABLE
+theater,movie_reservation,MOVIE_RESERVATION_ID,int,NO
+theater,movie_reservation,PHONE_NUM,varchar,NO
+theater,movie_reservation,OWNER_NM,varchar,NO
+theater,movie_reservation,RUN_MOVIE_ID,int,NO
+theater,movie_reservation,SEAT_NUM,varchar,NO
+theater,movie_room,MOVIE_ROOM_NUM,int,NO
+theater,movie_room,MOVIE_ROOM_SEATS,int,NO
+theater,movie_room,MOVIE_ROOM_ROWS,int,NO
+theater,movie_room,MOVIE_ROOM_COLS,int,NO
+theater,run_movie,RUN_MOVIE_ID,int,NO
+theater,run_movie,MOVIE_NM,varchar,NO
+theater,run_movie,RUN_MOVIE_PRICE,varchar,NO
+theater,run_movie,RUN_MOVIE_ST_TIME,varchar,NO
+theater,run_movie,RUN_MOVIE_RUNTIME,varchar,NO
+theater,run_movie,RUN_MOVIE_ROOM_NUM,varchar,NO
+theater,run_movie,RUN_MOVIE_ROOM_SEATS,int,YES
